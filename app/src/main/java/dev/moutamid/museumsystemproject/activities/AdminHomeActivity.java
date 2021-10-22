@@ -21,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import dev.moutamid.museumsystemproject.MainActivity;
 import dev.moutamid.museumsystemproject.R;
 import dev.moutamid.museumsystemproject.databinding.ActivityAdminHomeBinding;
 import dev.moutamid.museumsystemproject.models.MuseumDetailsModel;
@@ -60,6 +61,19 @@ public class AdminHomeActivity extends AppCompatActivity {
 
                 uploadImageAndDetails();
 
+            }
+        });
+
+        b.logoutBtnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                Utils.removeSharedPref();
+                Intent intent = new Intent(AdminHomeActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                finish();
+                startActivity(intent);
             }
         });
 
@@ -131,12 +145,12 @@ public class AdminHomeActivity extends AppCompatActivity {
 
                             // IF NOT ALREADY STORED PUSH KEY
                             if (Utils.getString(Constants.PUSH_KEY, "e").equals("e"))
-                                model.pushKey = Constants.databaseReference.child(Constants.MUSEUMS_LIST).push().getKey();
+                                model.pushKey = Constants.databaseReference.child(Constants.BUSINESSES_LIST).push().getKey();
 
                                 // ELSE IF EXIST ALREADY
                             else model.pushKey = Utils.getString(Constants.PUSH_KEY);
 
-                            Constants.databaseReference.child(Constants.MUSEUMS_LIST)
+                            Constants.databaseReference.child(Constants.BUSINESSES_LIST)
                                     .child(model.getPushKey())
                                     .setValue(model)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {

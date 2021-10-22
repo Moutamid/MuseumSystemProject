@@ -16,9 +16,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/logoutBtnAdmin"
+                android:src="@drawable/ic_baseline_logout_24" />
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="100dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,7 +53,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
-                        android:text="Museum\ndetails"
+                        android:text="Business\ndetails"
                         android:textColor="@color/card_bg"
                         android:textSize="25sp"
                         android:textStyle="bold" />
@@ -70,7 +79,7 @@
                     android:layout_marginTop="20dp"
                     android:drawableEnd="@drawable/ic_baseline_person_outline_24"
                     android:drawableTint="@color/color_dark"
-                    android:hint="Museum Name"
+                    android:hint="Business Name"
                     android:inputType="textPersonName" />
 
                 <EditText
@@ -81,7 +90,7 @@
                     android:layout_marginTop="20dp"
                     android:drawableEnd="@drawable/tickets"
                     android:drawableTint="@color/color_dark"
-                    android:hint="Price of ticket person"
+                    android:hint="Phone number"
                     android:inputType="number" />
 
                 <EditText
@@ -110,7 +119,7 @@
                         android:drawablePadding="10dp"
                         android:drawableEnd="@drawable/manual"
                         android:drawableTint="@color/color_dark"
-                        android:hint="User Manuel"
+                        android:hint="More info"
                         android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -129,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/terms"
                         android:drawableTint="@color/color_dark"
-                        android:hint="Rules and regulations"
+                        android:hint="Some more info"
                         android:drawablePadding="10dp"
                         android:inputType="textMultiLine" />
 

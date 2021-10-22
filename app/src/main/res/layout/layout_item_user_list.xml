@@ -42,10 +42,10 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Museum Name"
-                android:id="@+id/name"
+                android:text="Business Name"
                 android:textColor="@color/lightBlack"
                 android:textStyle="bold" />
 
@@ -54,41 +54,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Street Address" />
+                android:text="Street address" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Price per ticket: $200" />
+                android:text="Phone number: 82736987312" />
 
 
-            <io.github.glailton.expandabletextview.ExpandableTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <!--            <io.github.glailton.expandabletextview.ExpandableTextView-->
+            <TextView
                 android:id="@+id/manual"
-                android:text="User Maneul: jhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshf"
-                app:anchorTextColor="@color/orange_premium"
-                app:animDuration="2000"
-                app:collapsedLines="2"
-                app:isExpanded="false"
-                app:readLessText="Show less"
-                app:readMoreText="Show more"
-                app:textMode="line" />
-
-            <io.github.glailton.expandabletextview.ExpandableTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Terms and conditions: jhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshf"
-                app:anchorTextColor="@color/orange_premium"
-                app:animDuration="2000"
+                android:text="jsgshgkjagkjhdgjkadsg" />
+            <!--android:text="User Maneul: jhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshf"
+            app:anchorTextColor="@color/orange_premium"
+            app:animDuration="2000"
+            app:collapsedLines="2"
+            app:isExpanded="false"
+            app:readLessText="Show less"
+            app:readMoreText="Show more"
+            app:textMode="line" />-->
+
+            <!--            <io.github.glailton.expandabletextview.ExpandableTextView-->
+            <TextView
                 android:id="@+id/terms"
-                app:collapsedLines="2"
-                app:isExpanded="false"
-                app:readLessText="Show less"
-                app:readMoreText="Show more"
-                app:textMode="line" />
+                android:layout_width="match_parent"
+                android:text="ksdjgfashdglkjshgskjlghlsk"
+                android:layout_height="wrap_content" />
+            <!--android:text="Terms and conditions: jhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshfjhsgfkjasgfajskgfjskgfasjkgfsjkgfsjkhgfkjgfdalhfalkshf"
+            app:anchorTextColor="@color/orange_premium"
+            app:animDuration="2000"
+            app:collapsedLines="2"
+            app:isExpanded="false"
+            app:readLessText="Show less"
+            app:readMoreText="Show more"
+            app:textMode="line" />-->
 
 
         </LinearLayout>

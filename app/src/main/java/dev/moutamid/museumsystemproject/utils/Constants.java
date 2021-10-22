@@ -10,7 +10,7 @@ public class Constants {
     public static final String REGISTER = "register";
     public static final String PARAMS = "params";
     public static final String TYPE = "type";
-    public static final String MUSEUMS_LIST = "museums_list";
+    public static final String BUSINESSES_LIST = "museums_list";
     public static final String PUSH_KEY = "pushKey";
     public static final String USER_MODEL = "userModel";
 

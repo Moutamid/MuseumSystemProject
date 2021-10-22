@@ -1,12 +1,9 @@
 package dev.moutamid.museumsystemproject.activities;
 
 import static android.view.LayoutInflater.from;
-import static com.bumptech.glide.Glide.*;
 import static com.bumptech.glide.Glide.with;
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static dev.moutamid.museumsystemproject.R.color.lighterGrey;
-import static dev.moutamid.museumsystemproject.R.id.add;
-import static dev.moutamid.museumsystemproject.R.id.user_list_recyclerView;
 import static dev.moutamid.museumsystemproject.R.layout.layout_item_user_list;
 
 import androidx.annotation.NonNull;
@@ -17,29 +14,30 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import dev.moutamid.museumsystemproject.MainActivity;
 import dev.moutamid.museumsystemproject.R;
 import dev.moutamid.museumsystemproject.databinding.ActivityUserHomeBinding;
 import dev.moutamid.museumsystemproject.models.MuseumDetailsModel;
 import dev.moutamid.museumsystemproject.utils.Constants;
 import dev.moutamid.museumsystemproject.utils.Helper;
 import dev.moutamid.museumsystemproject.utils.Utils;
-import io.github.glailton.expandabletextview.ExpandableTextView;
 
 public class UserHomeActivity extends AppCompatActivity {
     private static final String TAG = "UserHomeActivity";
@@ -61,7 +59,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
         Helper.showProgress(this);
 
-        Constants.databaseReference.child(Constants.MUSEUMS_LIST).addValueEventListener(new ValueEventListener() {
+        Constants.databaseReference.child(Constants.BUSINESSES_LIST).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
@@ -85,13 +83,27 @@ public class UserHomeActivity extends AppCompatActivity {
                 Utils.toast("ERROR: " + error.toException().getMessage());
             }
         });
+
+        b.logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                Utils.removeSharedPref();
+                Intent intent = new Intent(UserHomeActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                finish();
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void setDetailsOnFirstLayout() {
         MuseumDetailsModel model = tasksArrayList.get(0);
 
         b.name1.setText(model.getName());
-        b.price1.setText("Price for ticket per person: $" + model.getPriceOfTicket());
+        b.price1.setText("Phone number: " + model.getPriceOfTicket());
         b.address1.setText(model.getAddress());
 
         with(context)
@@ -111,7 +123,7 @@ public class UserHomeActivity extends AppCompatActivity {
         MuseumDetailsModel model = tasksArrayList.get(1);
 
         b.name2.setText(model.getName());
-        b.price2.setText("Price for ticket per person: $" + model.getPriceOfTicket());
+        b.price2.setText("Phone number: " + model.getPriceOfTicket());
         b.address2.setText(model.getAddress());
 
         with(context)
@@ -131,7 +143,7 @@ public class UserHomeActivity extends AppCompatActivity {
         MuseumDetailsModel model = tasksArrayList.get(2);
 
         b.name3.setText(model.getName());
-        b.price3.setText("Price for ticket per person: $" + model.getPriceOfTicket());
+        b.price3.setText("Phone number: " + model.getPriceOfTicket());
         b.address3.setText(model.getAddress());
 
         with(context)
@@ -186,9 +198,9 @@ public class UserHomeActivity extends AppCompatActivity {
 
             holder.name.setText(model.getName());
             holder.address.setText(model.getAddress());
-            holder.price.setText("Price for ticket per person: $" + model.getPriceOfTicket());
-            holder.manual.setText("User Manual: " + model.getUserManual());
-            holder.terms.setText("Terms and conditions: " + model.getTerms());
+            holder.price.setText("Phone number: " + model.getPriceOfTicket());
+            holder.manual.setText("Some info: " + model.getUserManual());
+            holder.terms.setText("Some info: " + model.getTerms());
 
         }
 
@@ -203,7 +215,8 @@ public class UserHomeActivity extends AppCompatActivity {
 
             ImageView imageView;
             TextView name, address, price;
-            ExpandableTextView manual, terms;
+            TextView manual, terms;
+//            ExpandableTextView manual, terms;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);

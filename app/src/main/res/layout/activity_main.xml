@@ -7,41 +7,51 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomBtnsLayout">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginHorizontal="40dp"
-            android:src="@drawable/ic_undraw_art_museum_8or4" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:text="Welcome To \nMuseum System"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="Museum system is a mobile application for museum searching. The app connects user directly with museums, making it effortless to easily visit them."
-            android:textSize="18sp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="40dp"
+                android:src="@drawable/ic_undraw_art_museum_8or4" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="Welcome To \nBusiness System"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Business system is a mobile application for business searching. The app connects user directly with businesses, making it effortless to easily visit them."
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/bottomBtnsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -62,7 +72,16 @@
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Register"
+            app:backgroundTint="@color/orange_premium"
+            app:cornerRadius="20dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/guestModeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter guest mode"
             app:backgroundTint="@color/orange_premium"
             app:cornerRadius="20dp" />
 

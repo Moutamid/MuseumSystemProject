@@ -42,12 +42,12 @@ public class Helper {
         }
 
         if (manualEt.getText().toString().isEmpty()) {
-            Utils.toast("Please enter a user manual!");
+            Utils.toast("Please enter more info!");
             return true;
         }
 
         if (termsEt.getText().toString().isEmpty()) {
-            Utils.toast("Please enter terms and conditions!");
+            Utils.toast("Please enter some more info!");
             return true;
         }
 
