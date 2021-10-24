@@ -85,7 +85,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 //        progressDialog = new ProgressDialog(context);
 //        progressDialog.setMessage("Uploading Images please Wait.........!!!!!!");
 
-        b.uploadImageBtn.setOnClickListener(new View.OnClickListener() {
+        b.catalogueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TedImagePicker.with(context)
@@ -97,7 +97,13 @@ public class AdminHomeActivity extends AppCompatActivity {
 
                             }
                         });
-//                Helper.chooseFromStorage(AdminHomeActivity.this);
+            }
+        });
+
+        b.uploadImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Helper.chooseFromStorage(AdminHomeActivity.this);
             }
         });
 
@@ -168,52 +174,43 @@ public class AdminHomeActivity extends AppCompatActivity {
 
     private void storeLink(ArrayList<String> urlStrings) {
 
-        HashMap<String, String> hashMap = new HashMap<>();
+//        HashMap<String, String> hashMap = new HashMap<>();
 
         for (int i = 0; i < urlStrings.size(); i++) {
-            hashMap.put("ImgLink" + Utils.getRandomNmbr(99999), urlStrings.get(i));
-        }
+//            hashMap.put("ImgLink" + Utils.getRandomNmbr(99999), urlStrings.get(i));
 
-        String pushKey;
 
-        // IF NOT ALREADY STORED PUSH KEY
-        if (Utils.getString(Constants.PUSH_KEY, "e").equals("e"))
-            pushKey = Constants.databaseReference.child(Constants.BUSINESSES_LIST).push().getKey();
+//        String pushKey;
+
+            // IF NOT ALREADY STORED PUSH KEY
+//        if (Utils.getString(Constants.PUSH_KEY, "e").equals("e"))
+//            pushKey = Constants.databaseReference.child(Constants.BUSINESSES_LIST).push().getKey();
 
             // ELSE IF EXIST ALREADY
-        else pushKey = Utils.getString(Constants.PUSH_KEY);
-        Constants.databaseReference.child(Constants.BUSINESSES_LIST)
-                .child(auth.getUid())
-                .child(Constants.CATALOGUE)
-                .setValue(hashMap)
-                .addOnCompleteListener(
-                        new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Utils.store(Constants.PUSH_KEY, pushKey);
-                                    for (String url : urlStrings) {
+//        else pushKey = Utils.getString(Constants.PUSH_KEY);
+            Constants.databaseReference.child(Constants.BUSINESSES_LIST)
+                    .child(auth.getUid())
+                    .child(Constants.CATALOGUE)
+                    .push()
+                    .setValue(urlStrings.get(i));
+        }
 
-                                        DefaultSliderView defaultSliderView = new DefaultSliderView(context);
-                                        defaultSliderView.image(url)
-                                                .setOnSliderClickListener(OnDefaultSliderClickListener());
+//        Utils.store(Constants.PUSH_KEY, pushKey);
+        for (String url : urlStrings) {
 
-                                        sliderLayout.addSlider(defaultSliderView);
-                                    }
+            DefaultSliderView defaultSliderView = new DefaultSliderView(context);
+            defaultSliderView.image(url)
+                    .setOnSliderClickListener(OnDefaultSliderClickListener());
 
-                                    urlStrings.clear();
-                                    Helper.hideProgress();
-                                    b.topSmallView.setVisibility(View.VISIBLE);
+            sliderLayout.addSlider(defaultSliderView);
+        }
 
-                                }
-                            }
-                        }
-                ).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        sliderLayout.startAutoCycle();
+
+        urlStrings.clear();
+        Helper.hideProgress();
+        b.topSmallView.setVisibility(View.VISIBLE);
+
 //        progressDialog.dismiss();
 
     }
@@ -305,7 +302,9 @@ public class AdminHomeActivity extends AppCompatActivity {
                     .setOnSliderClickListener(OnDefaultSliderClickListener());
 
             sliderLayout.addSlider(defaultSliderView);
+
         }
+        b.topSmallView.setVisibility(View.VISIBLE);
 
     }
 
@@ -316,7 +315,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         if (requestCode == 9999 && resultCode == RESULT_OK) {
             imageUri = data.getData();
-            b.uploadImageBtn.setImageURI(imageUri);
+//            b.uploadImageBtn.setImageURI(imageUri);
         }
 
     }

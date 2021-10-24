@@ -25,24 +25,6 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
 
-
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() != null) {
-
-            Intent intent;
-
-            if (Utils.getString(Constants.TYPE).equals(Constants.TYPE_USER)) {
-                intent = new Intent(MainActivity.this, UserHomeActivity.class);
-            } else {
-                intent = new Intent(MainActivity.this, AdminHomeActivity.class);
-            }
-
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            finish();
-            startActivity(intent);
-            return;
-        }
-
         findViewById(R.id.loginBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

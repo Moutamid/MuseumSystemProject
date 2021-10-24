@@ -9,17 +9,9 @@
 
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/sliderLayout"
+        app:auto_cycle="true"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
-        android:id="@+id/catalogueBtn"
-        android:src="@drawable/ic_baseline_logout_24" />
 
     <com.ldt.springback.view.SpringBackLayout
         android:layout_width="match_parent"
@@ -37,7 +29,7 @@
                 <View
                     android:id="@+id/topSmallView"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="35dp"
                     android:visibility="gone" />
 
                 <View
@@ -189,5 +181,15 @@
         </androidx.core.widget.NestedScrollView>
 
     </com.ldt.springback.view.SpringBackLayout>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:focusable="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/catalogueBtn"
+        android:src="@drawable/ic_baseline_collections_24" />
 
 </RelativeLayout>

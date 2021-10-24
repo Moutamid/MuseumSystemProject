@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/drawable/splash_background.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_admin_home.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_registration.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_user_home.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/layout_item_user_list.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/MuseumSystemProject/app/src/main/res/drawable/bg_card_view.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/MuseumSystemProject/app/src/main/res/drawable/header_bg.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/MuseumSystemProject/app/src/main/res/layout/activity_admin_home.xml" value="0.19692307692307692" />

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:bottom="0dp"
+        android:drawable="@drawable/splash_screen"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp" />
+    <!--
+        <item
+            android:drawable="@drawable/ic_audiotrack_black_24dp"
+            android:gravity="center"
+            android:width="100dp"
+            android:height="100dp">
+        </item>-->
+
+</layer-list>
