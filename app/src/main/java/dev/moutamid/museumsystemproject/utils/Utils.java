@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-import dev.moutamid.museumsystemproject.models.MuseumDetailsModel;
+import dev.moutamid.museumsystemproject.models.BusinessDetailsModel;
 
 public class Utils {
 
@@ -195,15 +195,15 @@ public class Utils {
     }
 
     //getObject
-    public static MuseumDetailsModel getObject(String key, Class<?> tClass) {
+    public static BusinessDetailsModel getObject(String key, Class<?> tClass) {
 //          implementation 'com.google.code.gson:gson:2.8.7'
         checkfornull();
         try {
             Gson gson = new GsonBuilder().create();
-            return gson.fromJson(utils.sp.getString(key, ""), MuseumDetailsModel.class);
+            return gson.fromJson(utils.sp.getString(key, ""), BusinessDetailsModel.class);
         } catch (Exception e) {
             Log.e("gson", e.getMessage());
-            return new MuseumDetailsModel();
+            return new BusinessDetailsModel();
         }
     }
 
@@ -252,7 +252,7 @@ public class Utils {
 //        return new ArrayList<>(set);
 //    }
 
-    public String getRandomNmbr(int length) {
+    public static String getRandomNmbr(int length) {
         return String.valueOf(new Random().nextInt(length) + 1);
     }
 

@@ -25,8 +25,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ import java.util.ArrayList;
 import dev.moutamid.museumsystemproject.MainActivity;
 import dev.moutamid.museumsystemproject.R;
 import dev.moutamid.museumsystemproject.databinding.ActivityUserHomeBinding;
-import dev.moutamid.museumsystemproject.models.MuseumDetailsModel;
+import dev.moutamid.museumsystemproject.models.BusinessDetailsModel;
 import dev.moutamid.museumsystemproject.utils.Constants;
 import dev.moutamid.museumsystemproject.utils.Helper;
 import dev.moutamid.museumsystemproject.utils.Utils;
@@ -43,7 +41,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private static final String TAG = "UserHomeActivity";
     private Context context = UserHomeActivity.this;
 
-    private ArrayList<MuseumDetailsModel> tasksArrayList = new ArrayList<>();
+    private ArrayList<BusinessDetailsModel> tasksArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
     private RecyclerViewAdapterMessages adapter;
@@ -71,7 +69,7 @@ public class UserHomeActivity extends AppCompatActivity {
                 tasksArrayList.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    tasksArrayList.add(dataSnapshot.getValue(MuseumDetailsModel.class));
+                    tasksArrayList.add(dataSnapshot.getValue(BusinessDetailsModel.class));
                 }
 
                 setDetailsOnFirstLayout();
@@ -100,7 +98,7 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void setDetailsOnFirstLayout() {
-        MuseumDetailsModel model = tasksArrayList.get(0);
+        BusinessDetailsModel model = tasksArrayList.get(0);
 
         b.name1.setText(model.getName());
         b.price1.setText("Phone number: " + model.getPriceOfTicket());
@@ -120,7 +118,7 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void setDetailsOnSecond() {
-        MuseumDetailsModel model = tasksArrayList.get(1);
+        BusinessDetailsModel model = tasksArrayList.get(1);
 
         b.name2.setText(model.getName());
         b.price2.setText("Phone number: " + model.getPriceOfTicket());
@@ -140,7 +138,7 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void setDetailsOnThird() {
-        MuseumDetailsModel model = tasksArrayList.get(2);
+        BusinessDetailsModel model = tasksArrayList.get(2);
 
         b.name3.setText(model.getName());
         b.price3.setText("Phone number: " + model.getPriceOfTicket());
@@ -184,7 +182,7 @@ public class UserHomeActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
 
-            MuseumDetailsModel model = tasksArrayList.get(position);
+            BusinessDetailsModel model = tasksArrayList.get(position);
 
             with(context)
                     .asBitmap()

@@ -38,7 +38,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:id="@+id/logoutBtn"
                 android:src="@drawable/ic_baseline_logout_24" />
 
@@ -46,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
                 android:text="Featured Businesses"
                 android:textColor="@color/white"
                 android:textSize="20sp"

@@ -13,7 +13,8 @@ public class Constants {
     public static final String BUSINESSES_LIST = "museums_list";
     public static final String PUSH_KEY = "pushKey";
     public static final String USER_MODEL = "userModel";
+    public static final String CATALOGUE = "catalogue";
 
-    public static DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("MuseumProject");
+    public static DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("BusinessProject");
 
 }

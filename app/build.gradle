@@ -30,6 +30,10 @@ android {
     buildFeatures{
         viewBinding true
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -71,5 +75,12 @@ dependencies {
 
     implementation 'io.github.glailton.expandabletextview:expandabletextview:1.0.1'
 
+    implementation 'io.github.ParkSangGwon:tedimagepicker:1.2.6'
+
+    implementation 'com.github.ldt-libs:SpringBackLayout:1.0'
+
+    implementation 'com.squareup.picasso:picasso:2.3.2'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
 
 }

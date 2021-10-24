@@ -1,9 +1,9 @@
 package dev.moutamid.museumsystemproject.models;
 
-public class MuseumDetailsModel {
-    public String name, priceOfTicket, address, userManual, terms, pushKey, imageUrl;
+public class BusinessDetailsModel {
+    public String name, priceOfTicket, address, userManual, terms, pushKey, imageUrl, uid;
 
-    public MuseumDetailsModel(String name, String priceOfTicket, String address, String userManual, String terms, String pushKey, String imageUrl) {
+    public BusinessDetailsModel(String name, String priceOfTicket, String address, String userManual, String terms, String pushKey, String imageUrl, String uid) {
         this.name = name;
         this.priceOfTicket = priceOfTicket;
         this.address = address;
@@ -11,6 +11,15 @@ public class MuseumDetailsModel {
         this.terms = terms;
         this.pushKey = pushKey;
         this.imageUrl = imageUrl;
+        this.uid = uid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getImageUrl() {
@@ -69,6 +78,6 @@ public class MuseumDetailsModel {
         this.terms = terms;
     }
 
-    public MuseumDetailsModel() {
+    public BusinessDetailsModel() {
     }
 }
