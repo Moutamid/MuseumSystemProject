@@ -8,6 +8,7 @@ import static dev.moutamid.museumsystemproject.R.layout.layout_item_user_list;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
@@ -51,6 +52,7 @@ public class UserHomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         b = ActivityUserHomeBinding.inflate(getLayoutInflater());
         Utils.changeStatusBarColor(this);
         setContentView(b.getRoot());
@@ -197,7 +199,7 @@ public class UserHomeActivity extends AppCompatActivity {
             holder.name.setText(model.getName());
             holder.address.setText(model.getAddress());
             holder.price.setText("Phone number: " + model.getPriceOfTicket());
-            holder.manual.setText("Some info: " + model.getUserManual());
+            holder.manual.setText("Some info: " + model.getDescription());
             holder.terms.setText("Some info: " + model.getTerms());
 
         }

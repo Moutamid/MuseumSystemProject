@@ -1,17 +1,94 @@
 package dev.moutamid.museumsystemproject.models;
 
-public class BusinessDetailsModel {
-    public String name, priceOfTicket, address, userManual, terms, pushKey, imageUrl, uid;
+import java.util.ArrayList;
 
-    public BusinessDetailsModel(String name, String priceOfTicket, String address, String userManual, String terms, String pushKey, String imageUrl, String uid) {
+public class BusinessDetailsModel {
+    public String name, priceOfTicket, address, description, terms, imageUrl, uid,
+            category, email, website, whatsapp;
+    public int categoryPosition;
+    public ArrayList<String> catalogues;
+    public double latitude, longitude;
+
+    public BusinessDetailsModel(String name, String priceOfTicket, String address, String description, String terms, String imageUrl, String uid, String category, String email, String website, String whatsapp, int categoryPosition, ArrayList<String> catalogues, double latitude, double longitude) {
         this.name = name;
         this.priceOfTicket = priceOfTicket;
         this.address = address;
-        this.userManual = userManual;
+        this.description = description;
         this.terms = terms;
-        this.pushKey = pushKey;
         this.imageUrl = imageUrl;
         this.uid = uid;
+        this.category = category;
+        this.email = email;
+        this.website = website;
+        this.whatsapp = whatsapp;
+        this.categoryPosition = categoryPosition;
+        this.catalogues = catalogues;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getWhatsapp() {
+        return whatsapp;
+    }
+
+    public void setWhatsapp(String whatsapp) {
+        this.whatsapp = whatsapp;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public ArrayList<String> getCatalogues() {
+        return catalogues;
+    }
+
+    public void setCatalogues(ArrayList<String> catalogues) {
+        this.catalogues = catalogues;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getCategoryPosition() {
+        return categoryPosition;
+    }
+
+    public void setCategoryPosition(int categoryPosition) {
+        this.categoryPosition = categoryPosition;
     }
 
     public String getUid() {
@@ -28,14 +105,6 @@ public class BusinessDetailsModel {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getPushKey() {
-        return pushKey;
-    }
-
-    public void setPushKey(String pushKey) {
-        this.pushKey = pushKey;
     }
 
     public String getName() {
@@ -62,12 +131,12 @@ public class BusinessDetailsModel {
         this.address = address;
     }
 
-    public String getUserManual() {
-        return userManual;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUserManual(String userManual) {
-        this.userManual = userManual;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTerms() {

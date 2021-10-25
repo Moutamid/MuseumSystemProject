@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">BusinessSystemProject</string>
+    <string name="categories">Select your category</string>
+
+    <string-array name="categories_array">
+        <item>Automotive Parts</item>
+        <item>Automotive Accessories</item>
+        <item>Automotive Electronics</item>
+        <item>Automotive Coating And Paint</item>
+        <item>Tools</item>
+        <item>Diagnostics</item>
+        <item>Engineering</item>
+        <item>Lubricants</item>
+        <item>Styling</item>
+        <item>Anti-Theft Technologies.</item>
+        <item>Fitment Centres</item>
+        <item>Workshops</item>
+        <item>Scrapyards</item>
+        <item>Sound.</item>
+        <item>Vehicle Detailing</item>
+    </string-array>
 </resources>

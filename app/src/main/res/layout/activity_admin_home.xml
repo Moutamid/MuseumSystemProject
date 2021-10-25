@@ -9,9 +9,9 @@
 
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/sliderLayout"
-        app:auto_cycle="true"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        app:auto_cycle="true" />
 
     <com.ldt.springback.view.SpringBackLayout
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_card_view"
+                    android:elevation="20dp"
                     android:orientation="vertical"
                     android:padding="10dp">
 
@@ -78,38 +79,126 @@
 
                     </RelativeLayout>
 
+                    <Spinner
+                        android:id="@+id/spinnerCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="20dp"
+                        android:entries="@array/categories_array"
+                        android:prompt="@string/categories"
+                        android:spinnerMode="dialog" />
+
                     <EditText
                         android:id="@+id/nameEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"
-                        android:drawableEnd="@drawable/ic_baseline_person_outline_24"
-                        android:drawableTint="@color/color_dark"
+                        android:drawableEnd="@drawable/name"
                         android:hint="Business Name"
                         android:inputType="textPersonName" />
-
+                    <!--                        android:drawableTint="@color/color_dark"-->
                     <EditText
-                        android:id="@+id/priceEt"
+                        android:id="@+id/phoneNmbrEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"
-                        android:drawableEnd="@drawable/tickets"
-                        android:drawableTint="@color/color_dark"
+                        android:drawableEnd="@drawable/phone"
                         android:hint="Phone number"
                         android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/addressEt"
+                        android:id="@+id/emailEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"
-                        android:drawableEnd="@drawable/address"
-                        android:drawableTint="@color/color_dark"
-                        android:hint="Street Address"
+                        android:drawableEnd="@drawable/email"
+                        android:hint="Email address"
                         android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/websiteEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableEnd="@drawable/website"
+                        android:hint="Website"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/whatsAppEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableEnd="@drawable/whatsapp"
+                        android:hint="WhatsApp with country code"
+                        android:inputType="number" />
+
+
+                    <TextView
+                        android:id="@+id/enterAddressTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:gravity="center_vertical"
+                        android:text="Enter your address"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:id="@+id/addressLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/addressEt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableEnd="@drawable/address"
+                                android:drawablePadding="10dp"
+                                android:hint="Street Address"
+                                android:inputType="textMultiLine" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <EditText
+                            android:id="@+id/latitudeEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="20dp"
+                            android:drawableEnd="@drawable/latitude"
+                            android:hint="Latitude"
+                            android:inputType="textPersonName" />
+
+                        <EditText
+                            android:id="@+id/longitudeEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="20dp"
+                            android:drawableEnd="@drawable/longitude"
+                            android:hint="Longitude"
+                            android:inputType="textPersonName" />
+
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -120,13 +209,12 @@
                         android:layout_marginEnd="20dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/manualEt"
+                            android:id="@+id/descriptionEt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableEnd="@drawable/manual"
+                            android:drawableEnd="@drawable/description"
                             android:drawablePadding="10dp"
-                            android:drawableTint="@color/color_dark"
-                            android:hint="More info"
+                            android:hint="Description"
                             android:inputType="textMultiLine" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -143,9 +231,8 @@
                             android:id="@+id/termsEt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableEnd="@drawable/terms"
+                            android:drawableEnd="@drawable/description"
                             android:drawablePadding="10dp"
-                            android:drawableTint="@color/color_dark"
                             android:hint="Some more info"
                             android:inputType="textMultiLine" />
 
@@ -183,13 +270,13 @@
     </com.ldt.springback.view.SpringBackLayout>
 
     <ImageView
+        android:id="@+id/catalogueBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:focusable="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="40dp"
-        android:id="@+id/catalogueBtn"
+        android:layout_marginEnd="20dp"
+        android:focusable="true"
         android:src="@drawable/ic_baseline_collections_24" />
 
 </RelativeLayout>
