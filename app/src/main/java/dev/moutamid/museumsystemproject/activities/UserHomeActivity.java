@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -42,7 +43,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private static final String TAG = "UserHomeActivity";
     private Context context = UserHomeActivity.this;
 
-    private ArrayList<BusinessDetailsModel> tasksArrayList = new ArrayList<>();
+    private ArrayList<BusinessDetailsModel> businessesArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
     private RecyclerViewAdapterMessages adapter;
@@ -68,10 +69,10 @@ public class UserHomeActivity extends AppCompatActivity {
                     return;
                 }
 
-                tasksArrayList.clear();
+                businessesArrayList.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    tasksArrayList.add(dataSnapshot.getValue(BusinessDetailsModel.class));
+                    businessesArrayList.add(dataSnapshot.getValue(BusinessDetailsModel.class));
                 }
 
                 setDetailsOnFirstLayout();
@@ -100,13 +101,14 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void setDetailsOnFirstLayout() {
-        BusinessDetailsModel model = tasksArrayList.get(0);
+        BusinessDetailsModel model = businessesArrayList.get(0);
 
         b.name1.setText(model.getName());
-        b.price1.setText("Phone number: " + model.getPriceOfTicket());
+        b.price1.setText("Number: " + model.getPriceOfTicket());
         b.address1.setText(model.getAddress());
+        b.rating1.setText(model.getAverageRating()+"");
 
-        with(context)
+        with(getApplicationContext())
                 .asBitmap()
                 .load(model.getImageUrl())
                 .apply(new RequestOptions()
@@ -120,13 +122,19 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void setDetailsOnSecond() {
-        BusinessDetailsModel model = tasksArrayList.get(1);
+        if (businessesArrayList.size() <= 1) {
+            initRecyclerView();
+            return;
+        }
+
+        BusinessDetailsModel model = businessesArrayList.get(1);
 
         b.name2.setText(model.getName());
-        b.price2.setText("Phone number: " + model.getPriceOfTicket());
+        b.price2.setText("Number: " + model.getPriceOfTicket());
         b.address2.setText(model.getAddress());
+        b.rating2.setText(model.getAverageRating()+"");
 
-        with(context)
+        with(getApplicationContext())
                 .asBitmap()
                 .load(model.getImageUrl())
                 .apply(new RequestOptions()
@@ -140,13 +148,14 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void setDetailsOnThird() {
-        BusinessDetailsModel model = tasksArrayList.get(2);
+        BusinessDetailsModel model = businessesArrayList.get(2);
 
         b.name3.setText(model.getName());
-        b.price3.setText("Phone number: " + model.getPriceOfTicket());
+        b.price3.setText("Number: " + model.getPriceOfTicket());
         b.address3.setText(model.getAddress());
+        b.rating3.setText(model.getAverageRating()+"");
 
-        with(context)
+        with(getApplicationContext())
                 .asBitmap()
                 .load(model.getImageUrl())
                 .apply(new RequestOptions()
@@ -184,9 +193,9 @@ public class UserHomeActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
 
-            BusinessDetailsModel model = tasksArrayList.get(position);
+            BusinessDetailsModel model = businessesArrayList.get(position);
 
-            with(context)
+            with(getApplicationContext())
                     .asBitmap()
                     .load(model.getImageUrl())
                     .apply(new RequestOptions()
@@ -197,36 +206,45 @@ public class UserHomeActivity extends AppCompatActivity {
                     .into(holder.imageView);
 
             holder.name.setText(model.getName());
-            holder.address.setText(model.getAddress());
-            holder.price.setText("Phone number: " + model.getPriceOfTicket());
-            holder.manual.setText("Some info: " + model.getDescription());
-            holder.terms.setText("Some info: " + model.getTerms());
+            holder.category.setText(model.getCategory());
+//            holder.address.setText(model.getAddress());
+//            holder.price.setText("Phone number: " + model.getPriceOfTicket());
+//            holder.manual.setText("Some info: " + model.getDescription());
+//            holder.terms.setText("Some info: " + model.getTerms());
+
+            holder.ratingText.setText(model.getAverageRating()+"");
+            holder.ratingBar.setRating(model.getAverageRating());
 
         }
 
         @Override
         public int getItemCount() {
-            if (tasksArrayList == null)
+            if (businessesArrayList == null)
                 return 0;
-            return tasksArrayList.size();
+            return businessesArrayList.size();
         }
 
         public class ViewHolderRightMessage extends ViewHolder {
 
             ImageView imageView;
-            TextView name, address, price;
-            TextView manual, terms;
+            TextView name;//, address, price;
+//            TextView manual, terms;
 //            ExpandableTextView manual, terms;
+            TextView ratingText, category;
+            RatingBar ratingBar;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);
 
                 imageView = v.findViewById(R.id.imageview);
                 name = v.findViewById(R.id.name);
-                address = v.findViewById(R.id.address);
-                price = v.findViewById(R.id.price);
-                manual = v.findViewById(R.id.manual);
-                terms = v.findViewById(R.id.terms);
+//                address = v.findViewById(R.id.address);
+//                price = v.findViewById(R.id.price);
+//                manual = v.findViewById(R.id.manual);
+//                terms = v.findViewById(R.id.terms);
+                ratingText = v.findViewById(R.id.ratingText);
+                ratingBar = v.findViewById(R.id.ratingBar);
+                category = v.findViewById(R.id.category_user_list);
 
             }
         }

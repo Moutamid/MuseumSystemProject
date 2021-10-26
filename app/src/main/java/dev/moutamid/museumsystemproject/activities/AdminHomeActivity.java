@@ -389,16 +389,13 @@ public class AdminHomeActivity extends AppCompatActivity {
                             model.uid = mAuth.getUid();
                             model.categoryPosition = b.spinnerCategories.getSelectedItemPosition();
                             model.category = Constants.CATEGORIES_ARRAYS[b.spinnerCategories.getSelectedItemPosition()];
-
                             model.email = b.emailEt.getText().toString();
                             model.website = b.websiteEt.getText().toString();
                             model.whatsapp = b.whatsAppEt.getText().toString();
-
                             model.catalogues = urlStrings;
-
                             model.latitude = Double.parseDouble(b.latitudeEt.getText().toString());
                             model.longitude = Double.parseDouble(b.longitudeEt.getText().toString());
-
+                            model.averageRating = 0.0F;
                             // IF NOT ALREADY STORED PUSH KEY
 //                            if (Utils.getString(Constants.PUSH_KEY, "e").equals("e"))
 //                            model.pushKey = Constants.databaseReference.child(Constants.BUSINESSES_LIST).push().getKey();
@@ -451,10 +448,10 @@ public class AdminHomeActivity extends AppCompatActivity {
         model.catalogues = urlStrings;
         model.latitude = Double.parseDouble(b.latitudeEt.getText().toString());
         model.longitude = Double.parseDouble(b.longitudeEt.getText().toString());
-
         model.email = b.emailEt.getText().toString();
         model.website = b.websiteEt.getText().toString();
         model.whatsapp = b.whatsAppEt.getText().toString();
+        model.averageRating = 0.0F;
 
         Constants.databaseReference.child(Constants.BUSINESSES_LIST)
                 .child(mAuth.getUid())

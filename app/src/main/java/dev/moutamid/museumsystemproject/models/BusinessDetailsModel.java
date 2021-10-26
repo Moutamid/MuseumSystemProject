@@ -8,8 +8,9 @@ public class BusinessDetailsModel {
     public int categoryPosition;
     public ArrayList<String> catalogues;
     public double latitude, longitude;
+    public float averageRating;
 
-    public BusinessDetailsModel(String name, String priceOfTicket, String address, String description, String terms, String imageUrl, String uid, String category, String email, String website, String whatsapp, int categoryPosition, ArrayList<String> catalogues, double latitude, double longitude) {
+    public BusinessDetailsModel(String name, String priceOfTicket, String address, String description, String terms, String imageUrl, String uid, String category, String email, String website, String whatsapp, int categoryPosition, ArrayList<String> catalogues, double latitude, double longitude, float averageRating) {
         this.name = name;
         this.priceOfTicket = priceOfTicket;
         this.address = address;
@@ -25,6 +26,15 @@ public class BusinessDetailsModel {
         this.catalogues = catalogues;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.averageRating = averageRating;
+    }
+
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(float averageRating) {
+        this.averageRating = averageRating;
     }
 
     public String getEmail() {
