@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -217,11 +216,11 @@ public class AdminHomeActivity extends AppCompatActivity {
 
             // IF NOT ALREADY STORED PUSH KEY
 //        if (Utils.getString(Constants.PUSH_KEY, "e").equals("e"))
-//            pushKey = Constants.databaseReference.child(Constants.BUSINESSES_LIST).push().getKey();
+//            pushKey = Constants.databaseReference().child(Constants.BUSINESSES_LIST).push().getKey();
 
             // ELSE IF EXIST ALREADY
 //        else pushKey = Utils.getString(Constants.PUSH_KEY);
-            Constants.databaseReference.child(Constants.BUSINESSES_LIST)
+            Constants.databaseReference().child(Constants.BUSINESSES_LIST)
                     .child(auth.getUid())
                     .child(Constants.CATALOGUE)
                     .push()
@@ -269,7 +268,7 @@ public class AdminHomeActivity extends AppCompatActivity {
     private void checkIfStoredDataExist() {
 //        if (!Utils.getString(Constants.PUSH_KEY, "e").equals("e")) {
 
-        Constants.databaseReference.child(Constants.BUSINESSES_LIST)
+        Constants.databaseReference().child(Constants.BUSINESSES_LIST)
                 .child(mAuth.getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -396,14 +395,17 @@ public class AdminHomeActivity extends AppCompatActivity {
                             model.latitude = Double.parseDouble(b.latitudeEt.getText().toString());
                             model.longitude = Double.parseDouble(b.longitudeEt.getText().toString());
                             model.averageRating = 0.0F;
+                            model.lastUpdateDate = Utils.getDate();
+                            model.totalRatingCount = 0;
+
                             // IF NOT ALREADY STORED PUSH KEY
 //                            if (Utils.getString(Constants.PUSH_KEY, "e").equals("e"))
-//                            model.pushKey = Constants.databaseReference.child(Constants.BUSINESSES_LIST).push().getKey();
+//                            model.pushKey = Constants.databaseReference().child(Constants.BUSINESSES_LIST).push().getKey();
 
                             // ELSE IF EXIST ALREADY
 //                            else model.pushKey = Utils.getString(Constants.PUSH_KEY);
 
-                            Constants.databaseReference.child(Constants.BUSINESSES_LIST)
+                            Constants.databaseReference().child(Constants.BUSINESSES_LIST)
                                     .child(mAuth.getUid())
                                     .setValue(model)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -452,8 +454,9 @@ public class AdminHomeActivity extends AppCompatActivity {
         model.website = b.websiteEt.getText().toString();
         model.whatsapp = b.whatsAppEt.getText().toString();
         model.averageRating = 0.0F;
-
-        Constants.databaseReference.child(Constants.BUSINESSES_LIST)
+        model.lastUpdateDate = Utils.getDate();
+        model.totalRatingCount = 0;
+        Constants.databaseReference().child(Constants.BUSINESSES_LIST)
                 .child(mAuth.getUid())
                 .setValue(model)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

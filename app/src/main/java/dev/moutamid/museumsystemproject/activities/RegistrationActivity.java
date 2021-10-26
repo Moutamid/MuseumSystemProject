@@ -19,7 +19,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import dev.moutamid.museumsystemproject.R;
@@ -36,7 +35,6 @@ public class RegistrationActivity extends AppCompatActivity {
     String userType = Constants.TYPE_ADMIN;
 
     private ProgressDialog progressDialog;
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private FirebaseAuth mAuth = getInstance();
 
     @Override

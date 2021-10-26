@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class BusinessDetailsModel {
     public String name, priceOfTicket, address, description, terms, imageUrl, uid,
-            category, email, website, whatsapp;
-    public int categoryPosition;
+            category, email, website, whatsapp, lastUpdateDate;
+    public int categoryPosition, totalRatingCount;
     public ArrayList<String> catalogues;
     public double latitude, longitude;
     public float averageRating;
 
-    public BusinessDetailsModel(String name, String priceOfTicket, String address, String description, String terms, String imageUrl, String uid, String category, String email, String website, String whatsapp, int categoryPosition, ArrayList<String> catalogues, double latitude, double longitude, float averageRating) {
+    public BusinessDetailsModel(String name, String priceOfTicket, String address, String description, String terms, String imageUrl, String uid, String category, String email, String website, String whatsapp, String lastUpdateDate, int categoryPosition, int totalRatingCount, ArrayList<String> catalogues, double latitude, double longitude, float averageRating) {
         this.name = name;
         this.priceOfTicket = priceOfTicket;
         this.address = address;
@@ -22,11 +22,29 @@ public class BusinessDetailsModel {
         this.email = email;
         this.website = website;
         this.whatsapp = whatsapp;
+        this.lastUpdateDate = lastUpdateDate;
         this.categoryPosition = categoryPosition;
+        this.totalRatingCount = totalRatingCount;
         this.catalogues = catalogues;
         this.latitude = latitude;
         this.longitude = longitude;
         this.averageRating = averageRating;
+    }
+
+    public int getTotalRatingCount() {
+        return totalRatingCount;
+    }
+
+    public void setTotalRatingCount(int totalRatingCount) {
+        this.totalRatingCount = totalRatingCount;
+    }
+
+    public String getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(String lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
     }
 
     public float getAverageRating() {

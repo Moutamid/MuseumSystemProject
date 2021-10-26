@@ -524,12 +524,12 @@ public class Utils {
     //return gson.fromJson(json, type);
     // }
 
-    public String getDate() {
+    public static String getDate() {
 
         try {
 
             Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
             return sdf.format(date);
 
         } catch (Exception e) {

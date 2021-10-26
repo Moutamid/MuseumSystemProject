@@ -24,10 +24,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -60,7 +62,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
         Helper.showProgress(this);
 
-        Constants.databaseReference.child(Constants.BUSINESSES_LIST).addValueEventListener(new ValueEventListener() {
+        Constants.databaseReference().child(Constants.BUSINESSES_LIST).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
@@ -106,7 +108,7 @@ public class UserHomeActivity extends AppCompatActivity {
         b.name1.setText(model.getName());
         b.price1.setText("Number: " + model.getPriceOfTicket());
         b.address1.setText(model.getAddress());
-        b.rating1.setText(model.getAverageRating()+"");
+        b.rating1.setText(model.getAverageRating() + "");
 
         with(getApplicationContext())
                 .asBitmap()
@@ -132,7 +134,7 @@ public class UserHomeActivity extends AppCompatActivity {
         b.name2.setText(model.getName());
         b.price2.setText("Number: " + model.getPriceOfTicket());
         b.address2.setText(model.getAddress());
-        b.rating2.setText(model.getAverageRating()+"");
+        b.rating2.setText(model.getAverageRating() + "");
 
         with(getApplicationContext())
                 .asBitmap()
@@ -153,7 +155,7 @@ public class UserHomeActivity extends AppCompatActivity {
         b.name3.setText(model.getName());
         b.price3.setText("Number: " + model.getPriceOfTicket());
         b.address3.setText(model.getAddress());
-        b.rating3.setText(model.getAverageRating()+"");
+        b.rating3.setText(model.getAverageRating() + "");
 
         with(getApplicationContext())
                 .asBitmap()
@@ -212,8 +214,19 @@ public class UserHomeActivity extends AppCompatActivity {
 //            holder.manual.setText("Some info: " + model.getDescription());
 //            holder.terms.setText("Some info: " + model.getTerms());
 
-            holder.ratingText.setText(model.getAverageRating()+"");
+            holder.ratingText.setText(model.getAverageRating() + "");
             holder.ratingBar.setRating(model.getAverageRating());
+
+            holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Gson gson = new Gson();
+                    String str = gson.toJson(model);
+
+                    startActivity(new Intent(context, BusinessDetailActivity.class)
+                            .putExtra(Constants.PARAMS, str));
+                }
+            });
 
         }
 
@@ -226,9 +239,10 @@ public class UserHomeActivity extends AppCompatActivity {
 
         public class ViewHolderRightMessage extends ViewHolder {
 
+            MaterialCardView parentLayout;
             ImageView imageView;
             TextView name;//, address, price;
-//            TextView manual, terms;
+            //            TextView manual, terms;
 //            ExpandableTextView manual, terms;
             TextView ratingText, category;
             RatingBar ratingBar;
@@ -238,6 +252,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
                 imageView = v.findViewById(R.id.imageview);
                 name = v.findViewById(R.id.name);
+                parentLayout = v.findViewById(R.id.parent_layout_item);
 //                address = v.findViewById(R.id.address);
 //                price = v.findViewById(R.id.price);
 //                manual = v.findViewById(R.id.manual);
