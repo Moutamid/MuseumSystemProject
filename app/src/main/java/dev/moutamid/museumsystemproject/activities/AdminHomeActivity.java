@@ -94,6 +94,14 @@ public class AdminHomeActivity extends AppCompatActivity {
         logoutBtnCLick();
 
         getLocationBtn();
+
+        b.messageBtnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, ConvoActivity.class)
+                        .putExtra(Constants.PARAMS, mAuth.getUid()));
+            }
+        });
     }
 
     private void getLocationBtn() {

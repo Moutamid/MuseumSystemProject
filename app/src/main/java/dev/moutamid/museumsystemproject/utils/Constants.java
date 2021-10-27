@@ -18,6 +18,8 @@ public class Constants {
     public static final String USER_MODEL = "userModel";
     public static final String CATALOGUE = "catalogues";
     public static final String RATINGS = "ratings";
+    public static final String RATING_VALUE = "rating_value";
+    public static final String CHATS = "chats";
 
     public static DatabaseReference databaseReference() {
         DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference().child("BusinessProject");

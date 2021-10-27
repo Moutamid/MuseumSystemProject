@@ -177,8 +177,8 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.card.MaterialCardView
-                        style="@style/item_cardview"
                         android:id="@+id/addressLayout_detail"
+                        style="@style/item_cardview"
                         app:cardBackgroundColor="@color/white"
                         app:cardElevation="0dp">
 
@@ -210,8 +210,8 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        style="@style/item_cardview"
                         android:id="@+id/numberLayout_detail"
+                        style="@style/item_cardview"
                         app:cardBackgroundColor="@color/white"
                         app:cardElevation="0dp">
 
@@ -243,8 +243,8 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        style="@style/item_cardview"
                         android:id="@+id/emailLayout_detail"
+                        style="@style/item_cardview"
                         app:cardBackgroundColor="@color/white"
                         app:cardElevation="0dp">
 
@@ -276,8 +276,8 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        style="@style/item_cardview"
                         android:id="@+id/websiteLayout_detail"
+                        style="@style/item_cardview"
                         app:cardBackgroundColor="@color/white"
                         app:cardElevation="0dp">
 
@@ -309,8 +309,8 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        style="@style/item_cardview"
                         android:id="@+id/whatsappLayout_detail"
+                        style="@style/item_cardview"
                         app:cardBackgroundColor="@color/white"
                         app:cardElevation="0dp">
 
@@ -406,6 +406,19 @@
         android:layout_height="30dp"
         android:layout_margin="20dp"
         android:src="@drawable/ic_arrow_back_black_24dp"
+        app:tint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:id="@+id/messageBtnDetail"
+        android:src="@drawable/ic_baseline_chat_24"
+        app:backgroundTint="@color/orange_premium"
+        app:fabSize="normal"
+        android:scaleType="center"
         app:tint="@color/white" />
 
 </RelativeLayout>

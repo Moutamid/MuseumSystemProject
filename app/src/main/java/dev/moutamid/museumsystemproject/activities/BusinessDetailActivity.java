@@ -66,6 +66,15 @@ public class BusinessDetailActivity extends AppCompatActivity {
 
         setCLickListenersOnViews();
 
+        b.messageBtnDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context, ConvoActivity.class)
+                .putExtra(Constants.PARAMS, model.getUid()));
+
+            }
+        });
+
     }
 
     private void setCLickListenersOnViews() {
@@ -150,6 +159,12 @@ public class BusinessDetailActivity extends AppCompatActivity {
                     ratingBar.setRating(0);
                     return;
                 }
+
+                // IF RATING IS SAME LAST TIME THEN NO CHANGE IN DATABASE
+                if (Math.round(v) == Utils.getInt(Constants.RATING_VALUE, 6)) {
+                    return;
+                }
+                Utils.store(Constants.RATING_VALUE, Math.round(v));
 
                 /*if (rating_changed) {
                     rating_changed = false;

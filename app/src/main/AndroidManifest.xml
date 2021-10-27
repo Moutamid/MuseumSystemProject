@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MuseumSystemProject">
         <activity
+            android:name=".activities.ConvoActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.BusinessDetailActivity"
             android:exported="true" />
         <activity
@@ -23,13 +26,13 @@
             android:exported="true" />
         <activity
             android:name=".activities.UserHomeActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".activities.RegistrationActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".startup.SplashActivity"
             android:exported="true"
