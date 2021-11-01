@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 toast("Success");
                 Utils.store(Constants.TYPE, Constants.TYPE_USER);
+                Utils.store(Constants.IS_GUEST, true);
 
                 Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

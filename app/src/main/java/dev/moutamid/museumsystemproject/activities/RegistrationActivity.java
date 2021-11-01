@@ -59,6 +59,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 b.adminBtn.setBackgroundColor(getResources().getColor(R.color.orange_premium));
                 b.userBtn.setBackgroundColor(getResources().getColor(R.color.text_color_dark));
                 userType = Constants.TYPE_ADMIN;
+
+                b.registerBtn.setText("Add business");
+                b.loginBtn.setText("Business Login");
+
             }
         });
 
@@ -68,6 +72,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 b.userBtn.setBackgroundColor(getResources().getColor(R.color.orange_premium));
                 b.adminBtn.setBackgroundColor(getResources().getColor(R.color.text_color_dark));
                 userType = Constants.TYPE_USER;
+
+                b.registerBtn.setText("Register");
+                b.loginBtn.setText("Login");
             }
         });
 

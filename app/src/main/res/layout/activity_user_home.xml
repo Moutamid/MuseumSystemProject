@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ldt.springback.view.SpringBackLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.UserHomeActivity">
+
+    <com.ldt.springback.view.SpringBackLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -19,12 +23,14 @@
                 android:layout_height="500dp"
                 android:layout_marginTop="-200dp"
                 android:rotation="45"
+                android:visibility="invisible"
                 app:cardBackgroundColor="@color/orange_premium"
                 app:cardCornerRadius="500dp"
                 app:cardElevation="0dp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="400dp"
+                android:visibility="invisible"
                 android:layout_height="200dp"
                 android:rotation="137"
                 android:translationX="100dp"
@@ -37,12 +43,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/sliderLayoutUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:auto_cycle="true" />
+
                 <ImageView
                     android:id="@+id/logoutBtn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
-                    android:layout_marginTop="40dp"
                     android:layout_marginEnd="20dp"
                     android:src="@drawable/ic_baseline_logout_24" />
 
@@ -51,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:text="Featured Businesses"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lightBlackSpotify"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -70,14 +81,14 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/featuredItem1"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="10dp"
                                 android:orientation="vertical">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="250dp"
-                                    android:layout_height="250dp"
-
+                                    android:layout_width="200dp"
+                                    android:layout_height="200dp"
                                     app:cardCornerRadius="20dp">
 
                                     <RelativeLayout
@@ -151,10 +162,11 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="200dp"
-                                    android:layout_height="50dp"
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="35dp"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="-25dp"
+                                    android:layout_marginTop="-20dp"
                                     android:layout_marginBottom="20dp"
                                     android:background="@color/white"
                                     app:cardCornerRadius="10dp"
@@ -164,6 +176,9 @@
                                         android:id="@+id/address1"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
+                                        android:textSize="9sp"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
                                         android:layout_margin="5dp"
                                         android:text="Loading" />
 
@@ -175,13 +190,14 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/featuredItem2"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="10dp"
                                 android:orientation="vertical">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="250dp"
-                                    android:layout_height="250dp"
+                                    android:layout_width="200dp"
+                                    android:layout_height="200dp"
                                     app:cardCornerRadius="20dp">
 
                                     <RelativeLayout
@@ -257,10 +273,11 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="200dp"
-                                    android:layout_height="50dp"
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="35dp"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="-25dp"
+                                    android:layout_marginTop="-20dp"
                                     android:layout_marginBottom="20dp"
                                     android:background="@color/white"
                                     app:cardCornerRadius="10dp"
@@ -271,6 +288,9 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
+                                        android:textSize="9sp"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
                                         android:text="Loading" />
 
                                 </com.google.android.material.card.MaterialCardView>
@@ -282,12 +302,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="20dp"
+                                android:id="@+id/featuredItem3"
                                 android:layout_marginEnd="10dp"
                                 android:orientation="vertical">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="250dp"
-                                    android:layout_height="250dp"
+                                    android:layout_width="200dp"
+                                    android:layout_height="200dp"
                                     app:cardCornerRadius="20dp">
 
                                     <RelativeLayout
@@ -363,10 +384,11 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="200dp"
-                                    android:layout_height="50dp"
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="35dp"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="-25dp"
+                                    android:layout_marginTop="-20dp"
                                     android:layout_marginBottom="20dp"
                                     android:background="@color/white"
                                     app:cardCornerRadius="10dp"
@@ -377,6 +399,9 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="5dp"
+                                        android:textSize="9sp"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
                                         android:text="Location" />
 
                                 </com.google.android.material.card.MaterialCardView>
@@ -419,5 +444,6 @@
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
+    </com.ldt.springback.view.SpringBackLayout>
 
-</com.ldt.springback.view.SpringBackLayout>
+</RelativeLayout>

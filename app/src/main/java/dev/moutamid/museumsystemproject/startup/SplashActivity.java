@@ -28,6 +28,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+                if (Utils.getBoolean(Constants.IS_GUEST, false)){
+                    Intent intent1;
+                    intent1 = new Intent(SplashActivity.this, UserHomeActivity.class);
+                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    finish();
+                    startActivity(intent1);
+
+                }
 
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 if (mAuth.getCurrentUser() != null) {

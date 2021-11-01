@@ -24,6 +24,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -100,6 +102,39 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
+        String url1 = "https://firebasestorage.googleapis.com/v0/b/mysnapchatapp-cb445.appspot.com/o/ImageFolder%2FImages369709?alt=media&token=316e7250-aa95-40c3-9bfc-cbef2c95ed90";
+        String url2 = "https://firebasestorage.googleapis.com/v0/b/mysnapchatapp-cb445.appspot.com/o/ImageFolder%2FImages369711?alt=media&token=dc75367b-3c77-4f9c-8ca8-1582c915c2c6";
+        String url3 = "https://firebasestorage.googleapis.com/v0/b/mysnapchatapp-cb445.appspot.com/o/ImageFolder%2FImages369710?alt=media&token=c882ff35-b319-459e-839c-86c5931ba26f";
+
+
+
+        DefaultSliderView defaultSliderView1 = new DefaultSliderView(context);
+        defaultSliderView1.image(url1)
+                .setOnSliderClickListener(OnDefaultSliderClickListener());
+
+        DefaultSliderView defaultSliderView2 = new DefaultSliderView(context);
+        defaultSliderView2.image(url2)
+                .setOnSliderClickListener(OnDefaultSliderClickListener());
+
+        DefaultSliderView defaultSliderView3 = new DefaultSliderView(context);
+        defaultSliderView3.image(url3)
+                .setOnSliderClickListener(OnDefaultSliderClickListener());
+
+        b.sliderLayoutUser.addSlider(defaultSliderView1);
+        b.sliderLayoutUser.addSlider(defaultSliderView2);
+        b.sliderLayoutUser.addSlider(defaultSliderView3);
+
+    }
+
+    private BaseSliderView.OnSliderClickListener OnDefaultSliderClickListener() {
+        return new BaseSliderView.OnSliderClickListener() {
+            @Override
+            public void onSliderClick(BaseSliderView slider) {
+
+//                Picasso.with(getActivity()).load(slider.getUrl()).into(okayBtn);
+
+            }
+        };
     }
 
     private void setDetailsOnFirstLayout() {
@@ -120,7 +155,22 @@ public class UserHomeActivity extends AppCompatActivity {
                 .diskCacheStrategy(DATA)
                 .into(b.image1);
 
+        b.featuredItem1.setOnClickListener(featuredItemCLickListener(model));
+
         setDetailsOnSecond();
+    }
+
+    private View.OnClickListener featuredItemCLickListener(BusinessDetailsModel model) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Gson gson = new Gson();
+                String str = gson.toJson(model);
+
+                startActivity(new Intent(context, BusinessDetailActivity.class)
+                        .putExtra(Constants.PARAMS, str));
+            }
+        };
     }
 
     private void setDetailsOnSecond() {
@@ -146,6 +196,8 @@ public class UserHomeActivity extends AppCompatActivity {
                 .diskCacheStrategy(DATA)
                 .into(b.image2);
 
+        b.featuredItem2.setOnClickListener(featuredItemCLickListener(model));
+
         setDetailsOnThird();
     }
 
@@ -166,6 +218,8 @@ public class UserHomeActivity extends AppCompatActivity {
                 )
                 .diskCacheStrategy(DATA)
                 .into(b.image3);
+
+        b.featuredItem3.setOnClickListener(featuredItemCLickListener(model));
 
         initRecyclerView();
     }
