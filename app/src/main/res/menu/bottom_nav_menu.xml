@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:iconTint="@color/orange_premium"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:iconTint="@color/orange_premium"
+        android:id="@+id/navigation_wish_list"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Wishlist" />
+<!--
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_notifications" />
+-->
+
+    <item
+        android:id="@+id/navigation_account"
+        android:iconTint="@color/orange_premium"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Account" />
+
+</menu>

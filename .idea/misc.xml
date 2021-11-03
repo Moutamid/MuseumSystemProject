@@ -7,13 +7,19 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/drawable/splash_background.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_admin_home.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_business_detail.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_convo.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_registration.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/activity_user_home.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/fragment_account.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/fragment_wish_list.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/layout_item_user_list.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/layout/layout_mesage_item.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/BusinessSystemProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/MuseumSystemProject/app/src/main/res/drawable/bg_card_view.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/MuseumSystemProject/app/src/main/res/drawable/header_bg.xml" value="0.21614583333333334" />

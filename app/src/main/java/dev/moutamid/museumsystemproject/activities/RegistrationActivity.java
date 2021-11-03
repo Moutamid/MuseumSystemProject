@@ -158,7 +158,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     toast("Success");
                     Utils.store(Constants.TYPE, Constants.TYPE_USER);
 
-                    Intent intent = new Intent(context, UserHomeActivity.class);
+                    Intent intent = new Intent(context, BottomNavigationActivity.class);
+//                    Intent intent = new Intent(context, UserHomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     finish();
                     startActivity(intent);
@@ -214,7 +215,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     toast("Success");
                     Utils.store(Constants.TYPE, Constants.TYPE_USER);
 
-                    Intent intent = new Intent(context, UserHomeActivity.class);
+                    Intent intent = new Intent(context, BottomNavigationActivity.class);
+//                    Intent intent = new Intent(context, UserHomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     finish();
                     startActivity(intent);

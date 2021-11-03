@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MuseumSystemProject">
         <activity
+            android:name=".activities.BottomNavigationActivity"
+            android:exported="true"
+            android:label="@string/title_activity_bottom_navigation" />
+        <activity
             android:name=".activities.ConvoActivity"
             android:exported="true" />
         <activity

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.google.firebase.auth.FirebaseAuth;
 
 import dev.moutamid.museumsystemproject.activities.AdminHomeActivity;
+import dev.moutamid.museumsystemproject.activities.BottomNavigationActivity;
 import dev.moutamid.museumsystemproject.activities.RegistrationActivity;
 import dev.moutamid.museumsystemproject.activities.UserHomeActivity;
 import dev.moutamid.museumsystemproject.utils.Constants;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 Utils.store(Constants.TYPE, Constants.TYPE_USER);
                 Utils.store(Constants.IS_GUEST, true);
 
-                Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, BottomNavigationActivity.class);
+//                Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 finish();
                 startActivity(intent);

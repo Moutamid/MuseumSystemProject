@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import dev.moutamid.museumsystemproject.R;
@@ -57,6 +58,73 @@ public class BusinessDetailActivity extends AppCompatActivity {
 
         setListenerOnDatabase();
 
+        setCLickListenersOnViews();
+
+        try {
+            Constants.databaseReference()
+                    .child(Constants.LIKES)
+                    .child(auth.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                b.likeDetail.setImageResource(R.drawable.ic_favorite_selected);
+                                isLiked = true;
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+        } catch (Exception e) {
+
+        }
+
+        b.likeDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (auth.getCurrentUser() == null) {
+                    Utils.toast("You need to sign in to add this to wishlist!");
+                    return;
+                }
+
+                if (isLiked) {
+                    b.likeDetail.setImageResource(R.drawable.ic_favorite_unselected);
+                    isLiked = false;
+
+                    Constants.databaseReference()
+                            .child(Constants.LIKES)
+                            .child(auth.getUid())
+                            .child(model.getUid())
+                            .removeValue();
+
+                    Utils.toast("Removed");
+
+                } else {
+                    b.likeDetail.setImageResource(R.drawable.ic_favorite_selected);
+                    isLiked = true;
+
+                    Constants.databaseReference()
+                            .child(Constants.LIKES)
+                            .child(auth.getUid())
+                            .child(model.getUid())
+                            .setValue(model);
+
+                    Utils.toast("Added");
+                }
+
+            }
+        });
+
+    }
+
+    boolean isLiked = false;
+
+    private void setCLickListenersOnViews() {
         b.backBtnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,20 +132,15 @@ public class BusinessDetailActivity extends AppCompatActivity {
             }
         });
 
-        setCLickListenersOnViews();
-
         b.messageBtnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, ConvoActivity.class)
-                .putExtra(Constants.PARAMS, model.getUid()));
+                        .putExtra(Constants.PARAMS, model.getUid()));
 
             }
         });
 
-    }
-
-    private void setCLickListenersOnViews() {
         b.addressLayoutDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,28 +190,34 @@ public class BusinessDetailActivity extends AppCompatActivity {
             }
         });
 
-        Constants.databaseReference().child(Constants.BUSINESSES_LIST)
-                .child(model.getUid())
-                .child(Constants.RATINGS)
-                .child(auth.getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (!snapshot.exists()) {
-                            return;
+        try {
+
+            Constants.databaseReference().child(Constants.BUSINESSES_LIST)
+                    .child(model.getUid())
+                    .child(Constants.RATINGS)
+                    .child(auth.getUid())
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (!snapshot.exists()) {
+                                return;
+                            }
+
+                            try {
+                                b.rateBusinessDetail.setRating(Float.parseFloat(snapshot.getValue().toString()));
+                            } catch (Exception e) {
+                            }
                         }
 
-                        try {
-                            b.rateBusinessDetail.setRating(Float.parseFloat(snapshot.getValue().toString()));
-                        } catch (Exception e) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+        } catch (Exception e) {
 
-                    }
-                });
+        }
 
         b.rateBusinessDetail.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override

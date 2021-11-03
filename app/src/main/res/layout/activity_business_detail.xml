@@ -100,8 +100,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginEnd="10dp"
-                                android:src="@drawable/ic_favorite_unselected"
-                                android:visibility="invisible" />
+                                android:src="@drawable/ic_favorite_unselected" />
 
                         </RelativeLayout>
 
@@ -409,16 +408,16 @@
         app:tint="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/messageBtnDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
-        android:id="@+id/messageBtnDetail"
+        android:scaleType="center"
         android:src="@drawable/ic_baseline_chat_24"
         app:backgroundTint="@color/orange_premium"
         app:fabSize="normal"
-        android:scaleType="center"
         app:tint="@color/white" />
 
 </RelativeLayout>

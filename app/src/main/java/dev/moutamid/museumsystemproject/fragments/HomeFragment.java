@@ -1,4 +1,4 @@
-package dev.moutamid.museumsystemproject.activities;
+package dev.moutamid.museumsystemproject.fragments;
 
 import static android.view.LayoutInflater.from;
 import static com.bumptech.glide.Glide.with;
@@ -9,6 +9,7 @@ import static dev.moutamid.museumsystemproject.R.layout.layout_item_user_list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,12 +17,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -37,32 +35,33 @@ import java.util.ArrayList;
 
 import dev.moutamid.museumsystemproject.MainActivity;
 import dev.moutamid.museumsystemproject.R;
-import dev.moutamid.museumsystemproject.databinding.ActivityUserHomeBinding;
+import dev.moutamid.museumsystemproject.activities.BusinessDetailActivity;
+import dev.moutamid.museumsystemproject.adapters.RecyclerViewAdapterListItems;
+import dev.moutamid.museumsystemproject.databinding.FragmentHomeBinding;
 import dev.moutamid.museumsystemproject.models.BusinessDetailsModel;
 import dev.moutamid.museumsystemproject.utils.Constants;
 import dev.moutamid.museumsystemproject.utils.Helper;
 import dev.moutamid.museumsystemproject.utils.Utils;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class HomeFragment extends Fragment {
     private static final String TAG = "UserHomeActivity";
-    private Context context = UserHomeActivity.this;
+    private Context context;
 
     private ArrayList<BusinessDetailsModel> businessesArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
-    private RecyclerViewAdapterMessages adapter;
+    private RecyclerViewAdapterListItems adapter;
 
-    private ActivityUserHomeBinding b;
+    private FragmentHomeBinding b;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        b = ActivityUserHomeBinding.inflate(getLayoutInflater());
-        Utils.changeStatusBarColor(this);
-        setContentView(b.getRoot());
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        b = FragmentHomeBinding.inflate(inflater, container, false);
+        View root = b.getRoot();
+        context = requireContext();
 
-        Helper.showProgress(this);
+        Utils.changeStatusBarColor(requireActivity());
+
+        Helper.showProgress(requireActivity());
 
         Constants.databaseReference().child(Constants.BUSINESSES_LIST).addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,18 +88,12 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
-        b.logoutBtn.setOnClickListener(new View.OnClickListener() {
+        /*b.logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
-                Utils.removeSharedPref();
-                Intent intent = new Intent(UserHomeActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                finish();
-                startActivity(intent);
+
             }
-        });
+        });*/
 
         String url1 = "https://firebasestorage.googleapis.com/v0/b/mysnapchatapp-cb445.appspot.com/o/ImageFolder%2FImages369709?alt=media&token=316e7250-aa95-40c3-9bfc-cbef2c95ed90";
         String url2 = "https://firebasestorage.googleapis.com/v0/b/mysnapchatapp-cb445.appspot.com/o/ImageFolder%2FImages369711?alt=media&token=dc75367b-3c77-4f9c-8ca8-1582c915c2c6";
@@ -122,7 +115,10 @@ public class UserHomeActivity extends AppCompatActivity {
         b.sliderLayoutUser.addSlider(defaultSliderView2);
         b.sliderLayoutUser.addSlider(defaultSliderView3);
 
+
+        return root;
     }
+
 
     private BaseSliderView.OnSliderClickListener OnDefaultSliderClickListener() {
         return new BaseSliderView.OnSliderClickListener() {
@@ -138,12 +134,16 @@ public class UserHomeActivity extends AppCompatActivity {
     private void setDetailsOnFirstLayout() {
         BusinessDetailsModel model = businessesArrayList.get(0);
 
+        if (b == null) {
+            return;
+        }
+
         b.name1.setText(model.getName());
         b.price1.setText("Number: " + model.getPriceOfTicket());
         b.address1.setText(model.getAddress());
         b.rating1.setText(model.getAverageRating() + "");
 
-        with(getApplicationContext())
+        with(context.getApplicationContext())
                 .asBitmap()
                 .load(model.getImageUrl())
                 .apply(new RequestOptions()
@@ -184,7 +184,7 @@ public class UserHomeActivity extends AppCompatActivity {
         b.address2.setText(model.getAddress());
         b.rating2.setText(model.getAverageRating() + "");
 
-        with(getApplicationContext())
+        with(context.getApplicationContext())
                 .asBitmap()
                 .load(model.getImageUrl())
                 .apply(new RequestOptions()
@@ -207,7 +207,7 @@ public class UserHomeActivity extends AppCompatActivity {
         b.address3.setText(model.getAddress());
         b.rating3.setText(model.getAverageRating() + "");
 
-        with(getApplicationContext())
+        with(context.getApplicationContext())
                 .asBitmap()
                 .load(model.getImageUrl())
                 .apply(new RequestOptions()
@@ -223,9 +223,11 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        conversationRecyclerView = findViewById(R.id.user_list_recyclerView);
-        adapter = new RecyclerViewAdapterMessages();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        conversationRecyclerView = b.userListRecyclerView;
+
+//                findViewById(R.id.user_list_recyclerView);
+        adapter = new RecyclerViewAdapterListItems(businessesArrayList, context);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         conversationRecyclerView.setLayoutManager(linearLayoutManager);
         conversationRecyclerView.setHasFixedSize(true);
         conversationRecyclerView.setNestedScrollingEnabled(false);
@@ -234,87 +236,10 @@ public class UserHomeActivity extends AppCompatActivity {
         Helper.hideProgress();
     }
 
-    private class RecyclerViewAdapterMessages extends Adapter
-            <RecyclerViewAdapterMessages.ViewHolderRightMessage> {
+    /*@Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        b = null;
+    }*/
 
-        @NonNull
-        @Override
-        public ViewHolderRightMessage onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = from(parent.getContext()).inflate(layout_item_user_list, parent, false);
-            return new ViewHolderRightMessage(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
-
-            BusinessDetailsModel model = businessesArrayList.get(position);
-
-            with(getApplicationContext())
-                    .asBitmap()
-                    .load(model.getImageUrl())
-                    .apply(new RequestOptions()
-                            .placeholder(lighterGrey)
-                            .error(lighterGrey)
-                    )
-                    .diskCacheStrategy(DATA)
-                    .into(holder.imageView);
-
-            holder.name.setText(model.getName());
-            holder.category.setText(model.getCategory());
-//            holder.address.setText(model.getAddress());
-//            holder.price.setText("Phone number: " + model.getPriceOfTicket());
-//            holder.manual.setText("Some info: " + model.getDescription());
-//            holder.terms.setText("Some info: " + model.getTerms());
-
-            holder.ratingText.setText(model.getAverageRating() + "");
-            holder.ratingBar.setRating(model.getAverageRating());
-
-            holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Gson gson = new Gson();
-                    String str = gson.toJson(model);
-
-                    startActivity(new Intent(context, BusinessDetailActivity.class)
-                            .putExtra(Constants.PARAMS, str));
-                }
-            });
-
-        }
-
-        @Override
-        public int getItemCount() {
-            if (businessesArrayList == null)
-                return 0;
-            return businessesArrayList.size();
-        }
-
-        public class ViewHolderRightMessage extends ViewHolder {
-
-            MaterialCardView parentLayout;
-            ImageView imageView;
-            TextView name;//, address, price;
-            //            TextView manual, terms;
-//            ExpandableTextView manual, terms;
-            TextView ratingText, category;
-            RatingBar ratingBar;
-
-            public ViewHolderRightMessage(@NonNull View v) {
-                super(v);
-
-                imageView = v.findViewById(R.id.imageview);
-                name = v.findViewById(R.id.name);
-                parentLayout = v.findViewById(R.id.parent_layout_item);
-//                address = v.findViewById(R.id.address);
-//                price = v.findViewById(R.id.price);
-//                manual = v.findViewById(R.id.manual);
-//                terms = v.findViewById(R.id.terms);
-                ratingText = v.findViewById(R.id.ratingText);
-                ratingBar = v.findViewById(R.id.ratingBar);
-                category = v.findViewById(R.id.category_user_list);
-
-            }
-        }
-
-    }
 }

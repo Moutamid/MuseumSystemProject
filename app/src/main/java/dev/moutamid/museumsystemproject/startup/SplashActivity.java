@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import dev.moutamid.museumsystemproject.MainActivity;
 import dev.moutamid.museumsystemproject.activities.AdminHomeActivity;
+import dev.moutamid.museumsystemproject.activities.BottomNavigationActivity;
 import dev.moutamid.museumsystemproject.activities.UserHomeActivity;
 import dev.moutamid.museumsystemproject.utils.Constants;
 import dev.moutamid.museumsystemproject.utils.Utils;
@@ -30,11 +31,12 @@ public class SplashActivity extends AppCompatActivity {
 
                 if (Utils.getBoolean(Constants.IS_GUEST, false)){
                     Intent intent1;
-                    intent1 = new Intent(SplashActivity.this, UserHomeActivity.class);
+                    intent1 = new Intent(SplashActivity.this, BottomNavigationActivity.class);
+//                    intent1 = new Intent(SplashActivity.this, UserHomeActivity.class);
                     intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     finish();
                     startActivity(intent1);
-
+                    return;
                 }
 
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -43,7 +45,8 @@ public class SplashActivity extends AppCompatActivity {
                     Intent intent;
 
                     if (Utils.getString(Constants.TYPE).equals(Constants.TYPE_USER)) {
-                        intent = new Intent(SplashActivity.this, UserHomeActivity.class);
+                        intent = new Intent(SplashActivity.this, BottomNavigationActivity.class);
+//                        intent = new Intent(SplashActivity.this, UserHomeActivity.class);
                     } else {
                         intent = new Intent(SplashActivity.this, AdminHomeActivity.class);
                     }
@@ -55,6 +58,6 @@ public class SplashActivity extends AppCompatActivity {
                 } else
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
             }
-        }, 5000);
+        }, 10);
     }
 }
