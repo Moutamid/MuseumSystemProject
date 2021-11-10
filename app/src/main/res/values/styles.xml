@@ -41,4 +41,19 @@
         <item name="android:layout_marginHorizontal">15dp</item>
         <item name="android:layout_marginTop">10dp</item>
     </style>
+
+    <style name="home_top_block_size">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="top_block_address_layout">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">-20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:minHeight">35dp</item>
+    </style>
 </resources>

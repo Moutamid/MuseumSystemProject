@@ -87,9 +87,8 @@
                                 android:orientation="vertical">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="200dp"
-                                    android:layout_height="200dp"
-                                    app:cardCornerRadius="20dp">
+                                    app:cardCornerRadius="20dp"
+                                    style="@style/home_top_block_size">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -162,15 +161,9 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="150dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="-20dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:background="@color/white"
-                                    android:minHeight="35dp"
                                     app:cardCornerRadius="10dp"
-                                    app:cardElevation="7dp">
+                                    app:cardElevation="7dp"
+                                    style="@style/top_block_address_layout">
 
                                     <TextView
                                         android:id="@+id/address1"
@@ -196,9 +189,8 @@
                                 android:orientation="vertical">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="200dp"
-                                    android:layout_height="200dp"
-                                    app:cardCornerRadius="20dp">
+                                    app:cardCornerRadius="20dp"
+                                    style="@style/home_top_block_size">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -273,15 +265,9 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="150dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="-20dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:background="@color/white"
-                                    android:minHeight="35dp"
                                     app:cardCornerRadius="10dp"
-                                    app:cardElevation="7dp">
+                                    app:cardElevation="7dp"
+                                    style="@style/top_block_address_layout">
 
                                     <TextView
                                         android:id="@+id/address2"
@@ -307,9 +293,8 @@
                                 android:orientation="vertical">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="200dp"
-                                    android:layout_height="200dp"
-                                    app:cardCornerRadius="20dp">
+                                    app:cardCornerRadius="20dp"
+                                    style="@style/home_top_block_size">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -384,15 +369,9 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="150dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="-20dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:background="@color/white"
-                                    android:minHeight="35dp"
                                     app:cardCornerRadius="10dp"
-                                    app:cardElevation="7dp">
+                                    app:cardElevation="7dp"
+                                    style="@style/top_block_address_layout">
 
                                     <TextView
                                         android:id="@+id/address3"
